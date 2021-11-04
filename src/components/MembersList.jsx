@@ -8,6 +8,7 @@ const MembersList = () => {
   const [sortedUserData, setsortedUserData] = useState();
   const [sortType, setsortType] = useState("a-z");
 
+  //   Fetch user data from txt file and filter over 18s only
   const fetchData = async () => {
     try {
       const response = await fetch(jsonData);
@@ -34,10 +35,12 @@ const MembersList = () => {
     fetchData();
   }, []);
 
+  //   Get age from DoB
   const getAge = (date) => {
     return (new Date().getTime() - new Date(date).getTime()) / 31536000000;
   };
 
+  //   Filter users by status and re-sort data
   const handleStatusInput = (e) => {
     if (e.target.value === "all") {
       setsortedUserData(sortData(sortType, userData));
@@ -59,6 +62,7 @@ const MembersList = () => {
     }
   };
 
+  //   Order data alphabetically ascending or descending
   const sortData = (type, data) => {
     if (type === "a-z") {
       const sortData = [...data].sort((a, b) => {
@@ -86,6 +90,7 @@ const MembersList = () => {
     }
   };
 
+  //  Change order of users alphabetically based on selection
   const handleOrderInput = (e) => {
     if (e.target.value === "a-z") {
       setsortType("a-z");
