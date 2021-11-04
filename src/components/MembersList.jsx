@@ -35,7 +35,7 @@ const MembersList = () => {
     fetchData();
   }, []);
 
-  //   Get age from DoB
+  //   Get age from DoB - Subtract current date from DoB and then divide by amount of miliseconds in a year
   const getAge = (date) => {
     return (new Date().getTime() - new Date(date).getTime()) / 31536000000;
   };
@@ -106,7 +106,7 @@ const MembersList = () => {
   return (
     <div className="page__wrapper">
       <div className="memberlist__body">
-        <p className="memberlist__heading mb-5">Members List</p>
+        <p className="memberlist__heading mx-auto mb-5">Members List</p>
         <div className="memberlist__forms__labels">
           <label className="select__label__status">Status</label>
           <label className="select__label__order">Order by</label>
