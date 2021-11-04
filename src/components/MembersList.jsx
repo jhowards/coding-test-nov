@@ -9,30 +9,29 @@ const MembersList = () => {
   const [sortedUserData, setsortedUserData] = useState();
   const [sortType, setsortType] = useState("a-z");
 
-  //   Fetch user data from txt file and filter over 18s only
-  const fetchData = async () => {
-    try {
-      const response = await fetch(jsonData);
-      let data = await response.json();
-      const usersOver18 = data.filter((el) => getAge(el.dateOfBirth) >= 18);
-
-      usersOver18.sort(function (a, b) {
-        if (a.firstName < b.firstName) {
-          return -1;
-        }
-        if (a.firstName > b.firstName) {
-          return 1;
-        }
-        return 0;
-      });
-      setuserData(usersOver18);
-      setsortedUserData(usersOver18);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
+  //   Fetch user data from txt file and filter over 18s only - on page load
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(jsonData);
+        let data = await response.json();
+        const usersOver18 = data.filter((el) => getAge(el.dateOfBirth) >= 18);
+
+        usersOver18.sort(function (a, b) {
+          if (a.firstName < b.firstName) {
+            return -1;
+          }
+          if (a.firstName > b.firstName) {
+            return 1;
+          }
+          return 0;
+        });
+        setuserData(usersOver18);
+        setsortedUserData(usersOver18);
+      } catch (error) {
+        console.log(error);
+      }
+    };
     fetchData();
   }, []);
 
@@ -107,7 +106,7 @@ const MembersList = () => {
   return (
     <div className="page__wrapper">
       <div className="memberlist__body">
-        <p className="memberlist__heading mb-4">Members List</p>
+        <p className="memberlist__heading mb-5">Members List</p>
         <div className="memberlist__forms__labels">
           <label className="select__label__status">Status</label>
           <label className="select__label__order">Order by</label>
@@ -152,7 +151,7 @@ const MembersList = () => {
           <Row xs={2}>
             {sortedUserData &&
               sortedUserData.map((user) => (
-                <Col key={user.id} className="mb-4">
+                <Col key={user.id} className="memberlist__users__col">
                   <SingleUser user={user} />
                 </Col>
               ))}
