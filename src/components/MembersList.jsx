@@ -2,6 +2,7 @@ import React from "react";
 import jsonData from "../data/userlist 2.txt";
 import { useState, useEffect } from "react";
 import SingleUser from "./SingleUser";
+import { Row, Col } from "react-bootstrap";
 
 const MembersList = () => {
   const [userData, setuserData] = useState();
@@ -104,27 +105,60 @@ const MembersList = () => {
   };
 
   return (
-    <div>
-      <label>Status</label>
-      <select name="status" id="status" onChange={(e) => handleStatusInput(e)}>
-        <option value="all">All</option>
-        <option value="online">Online</option>
-        <option value="away">Away</option>
-        <option value="offline">Offline</option>
-      </select>
+    <div className="page__wrapper">
+      <div className="memberlist__body">
+        <p className="memberlist__heading mb-4">Members List</p>
+        <div className="memberlist__forms__labels">
+          <label className="select__label__status">Status</label>
+          <label className="select__label__order">Order by</label>
+        </div>
 
-      <label>Order by</label>
-      <select name="order" id="order" onChange={(e) => handleOrderInput(e)}>
-        <option value="a-z">A - Z</option>
-        <option value="z-a">Z - A</option>
-      </select>
+        <div className="mb-4">
+          <select
+            name="status"
+            id="status"
+            className="select__selectform"
+            onChange={(e) => handleStatusInput(e)}
+          >
+            <option value="all" className="memberlist__form__selectoption">
+              All
+            </option>
+            <option value="online" className="memberlist__form__selectoption">
+              Online
+            </option>
+            <option value="away" className="memberlist__form__selectoption">
+              Away
+            </option>
+            <option value="offline" className="memberlist__form__selectoption">
+              Offline
+            </option>
+          </select>
 
-      {sortedUserData &&
-        sortedUserData.map((user) => (
-          <div key={user.id}>
-            <SingleUser user={user} />
-          </div>
-        ))}
+          <select
+            name="order"
+            id="order"
+            className="select__selectform"
+            onChange={(e) => handleOrderInput(e)}
+          >
+            <option value="a-z" className="memberlist__form__selectoption">
+              A - Z
+            </option>
+            <option value="z-a" className="memberlist__form__selectoption">
+              Z - A
+            </option>
+          </select>
+        </div>
+        <div className="memberlist__users__wrapper">
+          <Row xs={2}>
+            {sortedUserData &&
+              sortedUserData.map((user) => (
+                <Col key={user.id} className="mb-4">
+                  <SingleUser user={user} />
+                </Col>
+              ))}
+          </Row>
+        </div>
+      </div>
     </div>
   );
 };

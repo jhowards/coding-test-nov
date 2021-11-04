@@ -1,3 +1,81 @@
 body {
-	margin: 0;
+  margin: 0;
+  background-color: #3775d3 !important;
+  font-family: Arial, sans-serif !important;
+}
+
+/* MemberList Component CSS */
+
+.memberlist__heading {
+  font: normal normal normal 30px/34px Arial;
+  letter-spacing: 0px;
+  color: #ffffff;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.memberlist__body {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  margin-top: 150px;
+  width: 630px;
+  height: 500px;
+}
+
+.memberlist__forms__labels {
+  font: normal normal normal 14px/16px Arial;
+  letter-spacing: 0px;
+  color: #ffffff;
+  display: block;
+}
+
+.select__label__status {
+  margin-right: 115px;
+}
+
+.select__selectform {
+  width: 122px;
+  height: 26px;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #707070;
+  opacity: 1;
+  margin-right: 30px;
+  font: normal normal normal 16px/18px Arial;
+  letter-spacing: 0px;
+  color: #707070;
+}
+
+.memberlist__form__selectoption {
+  font: normal normal normal 16px/18px Arial;
+  letter-spacing: 0px;
+  color: #707070;
+}
+
+.memberlist__users__wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* SingleUser Component CSS */
+
+.singleuser__body {
+  width: 308px;
+  height: 60px;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #707070;
+  border-radius: 2px;
+}
+
+.singleuser__name {
+  font: normal normal normal 16px/18px Arial;
+  letter-spacing: 0px;
+  color: #707070;
+}
+
+.singleuser__status {
+  font: italic normal normal 14px/16px Arial;
+  letter-spacing: 0px;
+  color: #707070;
 }
