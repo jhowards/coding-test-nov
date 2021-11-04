@@ -3,20 +3,14 @@ import jsonData from "../data/userlist 2.txt";
 import { useState, useEffect } from "react";
 import SingleUser from "./SingleUser";
 
-// const fetchData = async () => {
-//   fetch(jsonData)
-//     .then((r) => r.text())
-//     .then((text) => {
-//       return JSON.stringify(text);
-//     });
-// };
-
 const MembersList = () => {
+  const [userData, setuserData] = useState();
   const fetchData = async () => {
     try {
-      let response = await fetch(jsonData);
+      const response = await fetch(jsonData);
       let data = await response.json();
-      setuserData(data);
+      const usersOver18 = data.filter((el) => getAge(el.dateOfBirth) >= 18);
+      setuserData(usersOver18);
     } catch (error) {
       console.log(error);
     }
@@ -26,14 +20,17 @@ const MembersList = () => {
     fetchData();
   }, []);
 
-  const [userData, setuserData] = useState();
+  const getAge = (date) => {
+    return (new Date().getTime() - new Date(date).getTime()) / 31536000000;
+  };
+
   console.log(userData);
 
   return (
     <div>
       {userData &&
         userData.map((user) => (
-          <div>
+          <div key={user.id}>
             <SingleUser user={user} />
           </div>
         ))}
