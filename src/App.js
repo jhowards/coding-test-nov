@@ -1,5 +1,6 @@
+import MembersList from "./components/MembersList";
 function App() {
-  return null;
+  return <MembersList />;
 }
 
 export default App;
