@@ -1,5 +1,6 @@
 import React from "react";
 import StatusIcon from "./StatusIcon";
+import StatusText from "./StatusText";
 
 const SingleUser = ({ user }) => {
   return (
@@ -11,7 +12,7 @@ const SingleUser = ({ user }) => {
         <p className="singleuser__name mb-0">
           {user.firstName + " " + user.lastName}
         </p>
-        <p className="singleuser__status mb-0">{user.status}</p>
+        <StatusText status={user.status} />
       </div>
     </div>
   );
