@@ -1,7 +1,7 @@
 Created using React + React Bootstrap
 
 # Brief
-
+Hosted at https://coding-test-nov.vercel.app/
 ### Scenario
 A client has a simple database, which contains a list of users along with some personal data and their current activity status.<br>
 They want a simple display for a restricted area of their website, which will only show their members who are over the age of 18 along with their current status.<br>
